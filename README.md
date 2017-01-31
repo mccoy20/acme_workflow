@@ -3,21 +3,28 @@ A workflow tool for the ACME project
 
 # Installation
 
+First install the workflow 
     git clone https://github.com/sterlingbaldwin/acme_workflow.git
     cd acme_workflow
     conda env create -f acme.yml
     source activate acme
 
+Then install the globus online client
+    https://github.com/globusonline/transfer-api-client-python
+    cd transfer-api-client-python
+    python setup.py install
 
 # Usage
 
-    usage: workflow.py [-h] [-c CONFIG] [-d]
+    usage: workflow.py [-h] [-c CONFIG] [-d] [-s STATE]
 
     optional arguments:
-      -h, --help            show this help message and exit
-      -c CONFIG, --config CONFIG
-                        Path to configuration file
-      -d, --debug           Run in debug mode
+    -h, --help            show this help message and exit
+    -c CONFIG, --config CONFIG
+                            Path to configuration file
+    -d, --debug           Run in debug mode
+    -s STATE, --state STATE
+                            Path to a json state file
 
 
 An example json configuration file is supplied in the repo, and follows the following template.
