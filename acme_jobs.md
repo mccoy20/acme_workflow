@@ -1,8 +1,10 @@
 # Job types
     - Diagnostic
+    - PrimaryDiagnostic
+    - AMWGDiagnostic
     - Publish
     - Model
-    - Climo
+    - Ncclimo
     - Transfer
 
 
@@ -34,6 +36,30 @@
     outputs:
         obs, model, diff files for each variable, placed in the output directory (directory)
         log files (directory)
+
+# PrimaryDiagnostic
+    inputs:
+    projectdir
+        mpas_meshfile
+        mpas_remapfile
+        pop_remapfile
+        remap_files_dir
+        GPCP_regrid_wgt_file
+        CERES_EBAF_regrid_wgt_file
+        ERS_regrid_wgt_file
+        test_native_res
+        yr_offset
+        ref_case
+        ref_case_dir
+        test_native_res
+        obs_ocndir
+        obs_seaicedir
+        obs_sstdir
+        obs_iceareaNH
+        obs_iceareaSH
+        obs_icevolNH
+    outputs:
+        plots, saved to the projectdir
 
 # Publish
     inputs:
