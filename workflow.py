@@ -214,8 +214,6 @@ def add_jobs(job_set):
             os.makedirs(regrid_output_dir)
 
         # Setup variables for climo job
-        # climo_start_year = config.get('simulation_start_year') + ((year_set - 1) * config.get('set_frequency'))
-        # climo_end_year = climo_start_year + config.get('set_frequency') - 1
         climo_start_year = job_set.get('set_start_year')
         climo_end_year = job_set.get('set_end_year')
         year_set = job_set.get('year_set')
@@ -381,6 +379,7 @@ def monitor_check(monitor):
     if debug:
         print_message('Found new files:\n  {}'.format(
             pformat(checked_new_files, indent=4)), 'ok')
+
     # find which year set the data belongs to
     for f in new_files:
         for freq in config.get('set_frequency'):
@@ -776,7 +775,7 @@ if __name__ == "__main__":
     config = setup(parser)
 
     if config == -1:
-        print "Error in setup, exiting"
+        print_message("Error in setup, exiting")
         sys.exit(1)
 
     # compute number of expected year sets
@@ -826,23 +825,6 @@ if __name__ == "__main__":
     # Check for any data already on the System
     check_for_inplace_data()
     check_year_sets()
-    # if debug:
-    #     for s in job_sets:
-    #         print_message('year_set {0}:'.format(s.get('year_set')), 'ok')
-    #         for job in s['jobs']:
-    #             print_message('    {}'.format(str(job)))
-    # if debug:
-    #     print_message('printing year sets', 'ok')
-    #     for key in job_sets:
-    #         print_message(str(key['year_set']) + ': ' + key['status'], 'ok')
-    #     print_message('printing file list', 'ok')
-    #     for key in sorted(file_list, cmp=file_list_cmp):
-    #         print_message(key + ': ' + file_list[key], 'ok')
-
-    #     if all_data:
-    #         print_message('All data is local, disabling remote monitor')
-    #     else:
-    #         print_message('Data is missing, enabling remote monitor')
 
     # if all the data is local, dont start the monitor
     if not all_data:
