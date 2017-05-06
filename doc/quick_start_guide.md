@@ -95,13 +95,13 @@ Once globus has transfered the first year_set of data, it will start running the
 ### headless mode
 Uninterupted run in headless mode that wont stop if you close the terminal, writing to a custom log location, with no cleanup after completion
 ```
-nohup python workflow.py -c run.cfg --no-ui &
+nohup python /p/cscratch/acme/bin/acme_workflow/workflow.py -c ./run.cfg --no-ui &
 ```
 
 This run can continue after you close the termincal and log off the computer. While running in headless mode, you can check run_state.txt for the run status. This file can be found in your output directory.
 
 ```
-less run_state.txt
+less /p/cscratch/acme/<YOUR_USERNAME>/output/run_state.txt
 ```
 
 ![run_state](http://imgur.com/zS8f57g.png)
