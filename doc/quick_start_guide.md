@@ -71,19 +71,20 @@ The path on the source_endpoint to look for model output.
 A globus endpoind UUID, the default is edison.nersc.gov
 
 #### destination_endpoint
-The globus endpoint UUID for the machine doing the post-processing. The default is acme1.llnl.gov.
+The globus endpoint UUID for the machine doing the post-processing. The default is aims4.llnl.gov.
 
 ### Running
 
-Running on acme1 and aims4 is very easy. Simply activate the conda environment provided, and run the script.
+Running on acme1 and aims4 is very easy. Simply activate the conda environment provided, and run the script (change <YOUR_PATH> to your valid path to the script).
 ```
+bash
 source activate /p/cscratch/acme/bin/acme
-python /p/cscratch/acme/bin/acme_workflow/workflow.py -c /path/to/your/run.cfg
+python /p/cscratch/acme/bin/acme_workflow/workflow.py -c <YOUR_PATH>/run.cfg
 ```
 
-In interactive mode, if the terminal is closed or you log out, it will stop the process (but the runs managed by SLURM will continue). See below for headless mode instructions.
+You will be asked to log into globus, copy provided URL into a browser, then follow the small blue text link to log into your globus account. You will be presented with the Authorization Code, copy and paste it into your shell window. Globus endpoints need to be activated amnually, you need to activate both the source and the destination globus points. Copy and paste provided URLs into any browser and activate first source Endpoint (default nersc) then the target Endpoint (default aims4).
 
-    python workflow.py -c run.cfg
+In interactive mode, if the terminal is closed or you quit display with 'Ctr C' or you log out, it will stop the process (but the runs managed by SLURM will continue). See below for headless mode instructions.
 
 ![initial run](http://imgur.com/ZGuJUCk.png)
 
@@ -93,9 +94,9 @@ Once globus has transfered the first year_set of data, it will start running the
 
 
 ### headless mode
-Uninterupted run in headless mode that wont stop if you close the terminal, writing to a custom log location, with no cleanup after completion
+Uninterupted run in headless mode that won't stop if you close the terminal, writing to a custom log location, with no cleanup after completion'
 ```
-nohup python workflow.py -c run.cfg --no-ui &
+nohup python /p/cscratch/acme/bin/acme_workflow/workflow.py -c <YOUR_PATH>/run.cfg --no-ui &
 ```
 
 This run can continue after you close the termincal and log off the computer. While running in headless mode, you can check run_state.txt for the run status. This file can be found in your output directory.
